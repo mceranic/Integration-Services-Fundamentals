@@ -1,0 +1,953 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/18/2020 10:35:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WS-MERSIHACE"
+  DTS:CreatorName="MISTRAL\mersihace"
+  DTS:DTSID="{81910C18-E7AC-46E6-865A-673E884D947E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="05_ole_db_command"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{F0BD5CB5-A9C1-45D3-85BC-39D9B2CBB6B8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{EBC704B3-DA4D-45F2-AE70-C5DA176F4FDD}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\mersihace\Desktop\SSIS\Category.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorks20191]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{20D0A15E-2639-4FD3-8ED7-554F80E0EF35}"
+      DTS:ObjectName="WS-MERSIHACE\MSSQLSERVER19.AdventureWorks20191">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WS-MERSIHACE\MSSQLSERVER19;Initial Catalog=AdventureWorks2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2D8348AD-2AAB-45D1-9F7E-DEDC53C13546}"
+      DTS:ObjectName="WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WS-MERSIHACE\MSSQLSERVER19;Initial Catalog=AdventureWorksDW2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{316B6A18-0AF3-47AB-9D55-5FA17E0E73FD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ProductCategoryCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load Product Category Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5F5E5BB2-D517-45D3-972F-D806AC57CD47}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load Product Category Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load Product Category Table\OLE Extract Product Category"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE Extract Product Category"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProductCategory]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryKey]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryKey]"
+                      name="ProductCategoryKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryAlternateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryAlternateKey]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryAlternateKey]"
+                      name="ProductCategoryAlternateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[EnglishProductCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[EnglishProductCategoryName]"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[EnglishProductCategoryName]"
+                      name="EnglishProductCategoryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[SpanishProductCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[SpanishProductCategoryName]"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[SpanishProductCategoryName]"
+                      name="SpanishProductCategoryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[FrenchProductCategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[FrenchProductCategoryName]"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[FrenchProductCategoryName]"
+                      name="FrenchProductCategoryName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryKey]"
+                      dataType="i4"
+                      name="ProductCategoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryAlternateKey]"
+                      dataType="i4"
+                      name="ProductCategoryAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[EnglishProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="EnglishProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[SpanishProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="SpanishProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].ExternalColumns[FrenchProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FrenchProductCategoryName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ProductCategoryKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ProductCategoryKey]"
+                      name="ProductCategoryKey" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ProductCategoryAlternateKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ProductCategoryAlternateKey]"
+                      name="ProductCategoryAlternateKey" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[EnglishProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[EnglishProductCategoryName]"
+                      name="EnglishProductCategoryName" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[SpanishProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[SpanishProductCategoryName]"
+                      name="SpanishProductCategoryName" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[FrenchProductCategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[FrenchProductCategoryName]"
+                      name="FrenchProductCategoryName" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load Product Category Table\OLE Load Product Category"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE Load Product Category"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProductCategoryAlt]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load Product Category Table\OLE Load Product Category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].Columns[ProductCategoryKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryKey"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryKey]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryKey]" />
+                    <inputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].Columns[ProductCategoryAlternateKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryAlternateKey"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryAlternateKey]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[ProductCategoryAlternateKey]" />
+                    <inputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].Columns[EnglishProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EnglishProductCategoryName"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[EnglishProductCategoryName]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[EnglishProductCategoryName]" />
+                    <inputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].Columns[SpanishProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="SpanishProductCategoryName"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[SpanishProductCategoryName]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[SpanishProductCategoryName]" />
+                    <inputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].Columns[FrenchProductCategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FrenchProductCategoryName"
+                      externalMetadataColumnId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[FrenchProductCategoryName]"
+                      lineageId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output].Columns[FrenchProductCategoryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryKey]"
+                      dataType="i4"
+                      name="ProductCategoryKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryAlternateKey]"
+                      dataType="i4"
+                      name="ProductCategoryAlternateKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[EnglishProductCategoryName]"
+                      dataType="wstr"
+                      length="255"
+                      name="EnglishProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[SpanishProductCategoryName]"
+                      dataType="wstr"
+                      length="255"
+                      name="SpanishProductCategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input].ExternalColumns[FrenchProductCategoryName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FrenchProductCategoryName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load Product Category Table\OLE Load Product Category.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Load Product Category.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load Product Category Table\OLE Load Product Category.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load Product Category Table\OLE Load Product Category.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load Product Category Table\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::ProductCategoryCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load Product Category Table\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load Product Category Table\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Load Product Category Table\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load Product Category Table.Paths[OLE DB Source Output]"
+              endId="Package\DFT Load Product Category Table\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Load Product Category Table\OLE Extract Product Category.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Load Product Category Table.Paths[Row Count Output 1]"
+              endId="Package\DFT Load Product Category Table\OLE Load Product Category.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Load Product Category Table\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT OLE DB Command"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A43D46CB-84C6-4B87-BB45-0EC90892E912}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT OLE DB Command"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT OLE DB Command\EXC Category Names"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="EXC Category Names"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT OLE DB Command\EXC Category Names.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].ExternalColumns[CategoryID]"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryID]"
+                      name="CategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].ExternalColumns[CategoryName]"
+                      length="255"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryName]"
+                      name="CategoryName"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].ExternalColumns[CategoryID]"
+                      dataType="r8"
+                      name="CategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="255"
+                      name="CategoryName" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[CategoryID]"
+                      dataType="r8"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[CategoryID]"
+                      name="CategoryID" />
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[CategoryName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[CategoryName]"
+                      name="CategoryName" />
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT OLE DB Command\OLE DB Update Category Name"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Update Category Name"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update DimProductCategoryAlt 
+set EnglishProductCategoryName = ?
+where ProductCategoryKey = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AdventureWorksDW2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].Columns[CategoryID]"
+                      cachedDataType="r8"
+                      cachedName="CategoryID"
+                      externalMetadataColumnId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryID]" />
+                    <inputColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].Columns[CategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CategoryName"
+                      externalMetadataColumnId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output].Columns[CategoryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT OLE DB Command\OLE DB Update Category Name.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT OLE DB Command.Paths[Excel Source Output]"
+              endId="Package\DFT OLE DB Command\OLE DB Update Category Name.Inputs[OLE DB Command Input]"
+              name="Excel Source Output"
+              startId="Package\DFT OLE DB Command\EXC Category Names.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B697C667-1B77-4123-81A3-448C50224539}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::ProductCategoryCount] &gt; 2"
+      DTS:From="Package\DFT Load Product Category Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT OLE DB Command" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\DFT Load Product Category Table"
+          TopLeft="64.0000010899135,42.2117652978864" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\DFT OLE DB Command"
+          TopLeft="87.4285729174711,149.270590328758" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="181.714287003692,83.8117652978864">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.4588250308716"
+              Start="0,0"
+              End="0,57.9588250308716">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.9588250308716" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,20.9794125154358,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load Product Category Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DFT Load Product Category Table\OLE Load Product Category"
+          TopLeft="118.857144336311,204.941178177962" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\DFT Load Product Category Table\Row Count"
+          TopLeft="143.2,106.4" />
+        <NodeLayout
+          Size="217.6,41.6"
+          Id="Package\DFT Load Product Category Table\OLE Extract Product Category"
+          TopLeft="91.4285729855907,24.4705885784849" />
+        <EdgeLayout
+          Id="Package\DFT Load Product Category Table.Paths[Row Count Output 1]"
+          TopLeft="208,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.8571443363111,56.941178177962"
+              Start="0,0"
+              End="14.8571443363111,49.441178177962">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.470589088981" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.470589088981"
+                    Point2="0,28.470589088981"
+                    Point3="4,28.470589088981" />
+                  <mssgle:LineSegment
+                    End="10.8571443363111,28.470589088981" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.8571443363111,28.470589088981"
+                    Point2="14.8571443363111,28.470589088981"
+                    Point3="14.8571443363111,32.470589088981" />
+                  <mssgle:LineSegment
+                    End="14.8571443363111,49.441178177962" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load Product Category Table.Paths[OLE DB Source Output]"
+          TopLeft="204.114286492795,66.0705885784849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.3294114215151"
+              Start="0,0"
+              End="0,32.8294114215151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.8294114215151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load Product Category Table\OLE Load Product Category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load Product Category Table\OLE Extract Product Category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT OLE DB Command">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\DFT OLE DB Command\EXC Category Names"
+          TopLeft="135.2,57.6" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\DFT OLE DB Command\OLE DB Update Category Name"
+          TopLeft="133.6,161.6" />
+        <EdgeLayout
+          Id="Package\DFT OLE DB Command.Paths[Excel Source Output]"
+          TopLeft="224,99.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.2,62.4"
+              Start="0,0"
+              End="23.2,54.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.2"
+                    Point2="0,31.2"
+                    Point3="4,31.2" />
+                  <mssgle:LineSegment
+                    End="19.2,31.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.2,31.2"
+                    Point2="23.2,31.2"
+                    Point3="23.2,35.2" />
+                  <mssgle:LineSegment
+                    End="23.2,54.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT OLE DB Command\EXC Category Names">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

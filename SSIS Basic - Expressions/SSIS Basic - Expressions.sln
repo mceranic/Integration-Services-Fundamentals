@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Basic - Expressions", "SSIS Basic - Expressions.dtproj", "{2ED12922-F819-4B9F-AC7C-569524672D93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ED12922-F819-4B9F-AC7C-569524672D93}.Development|Default.ActiveCfg = Development
+		{2ED12922-F819-4B9F-AC7C-569524672D93}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A382556C-A072-416F-B23E-DC4D8EE64745}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,415 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2020 11:55:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WS-MERSIHACE"
+  DTS:CreatorName="MISTRAL\mersihace"
+  DTS:DTSID="{9CA7D427-9D8F-49F4-AADB-D48D1B6961A6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="06_raw_sql"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{16770252-15FE-4B28-AA27-168B162B7C81}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DF90C72C-F6D1-4C5A-B782-DA43566E317D}"
+      DTS:ObjectName="WS-MERSIHACE\MSSQLSERVER19.AW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WS-MERSIHACE\MSSQLSERVER19;Initial Catalog=AW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Raw To SQL Server"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{18346EAD-16AC-4F06-BCA1-A4CE0CA6D343}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Raw To SQL Server"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Raw To SQL Server\Raw Books"
+              componentClassID="Microsoft.RawSource"
+              contactInfo="Reads raw data from a flat file that was previously written by the Raw File destination. For example, allow packages to run faster by reading from a local raw file instead of a slow source or manually distribute data for parallel processing on multiple computers.;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Reads raw data from a flat file that was previously written by the Raw File destination. For example, allow packages to run faster by reading from a local raw file instead of a slow source or manually distribute data for parallel processing on multiple computers."
+              name="Raw Books"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the file."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Output file name"
+                  name="FileName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.NonValidatingFileNameEditor">C:\Users\mersihace\Desktop\SSIS\books.raw</property>
+                <property
+                  dataType="System.Null"
+                  description="Name of the variable that contains the file name"
+                  name="FileNameVariable" />
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output]"
+                  name="Raw File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[id]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[id]"
+                      length="255"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[author]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[author]"
+                      length="255"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[author]"
+                      name="author" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[title]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[title]"
+                      length="255"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[genre]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[genre]"
+                      length="255"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[genre]"
+                      name="genre" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[price]"
+                      dataType="decimal"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[price]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[price]"
+                      name="price"
+                      scale="10" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[publish_date]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[publish_date]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[publish_date]"
+                      name="publish_date" />
+                    <outputColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[description]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[description]"
+                      length="255"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[description]"
+                      name="description" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="255"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[author]"
+                      dataType="wstr"
+                      length="255"
+                      name="author" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[genre]"
+                      dataType="wstr"
+                      length="255"
+                      name="genre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[price]"
+                      dataType="decimal"
+                      name="price"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[publish_date]"
+                      dataType="dbTimeStamp"
+                      name="publish_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Raw To SQL Server\SQL Books"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="SQL Server Destination"
+              name="SQL Books"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the database object to copy data into."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[Books]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                  name="BulkInsertCheckConstraints">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                  name="BulkInsertKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="BulkInsertKeepNulls">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Raw To SQL Server\SQL Books.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AW]"
+                  connectionManagerRefId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.AW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input]"
+                  hasSideEffects="true"
+                  name="SQL Server Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[id]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[author]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="author"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[author]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[author]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[genre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="genre"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[genre]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[genre]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[price]"
+                      cachedDataType="decimal"
+                      cachedName="price"
+                      cachedScale="10"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[price]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[price]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[publish_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="publish_date"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[publish_date]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[publish_date]" />
+                    <inputColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[description]"
+                      lineageId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="255"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[author]"
+                      dataType="wstr"
+                      length="255"
+                      name="author" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[genre]"
+                      dataType="wstr"
+                      length="255"
+                      name="genre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[price]"
+                      dataType="numeric"
+                      name="price"
+                      precision="28"
+                      scale="10" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[publish_date]"
+                      dataType="dbTimeStamp"
+                      name="publish_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Raw To SQL Server.Paths[Raw File Source Output]"
+              endId="Package\DFT Raw To SQL Server\SQL Books.Inputs[SQL Server Destination Input]"
+              name="Raw File Source Output"
+              startId="Package\DFT Raw To SQL Server\Raw Books.Outputs[Raw File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\DFT Raw To SQL Server"
+          TopLeft="105.714287514589,56.8941184449774" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Raw To SQL Server">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\DFT Raw To SQL Server\Raw Books"
+          TopLeft="64.0000010899135,17.7411767194015" />
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\DFT Raw To SQL Server\SQL Books"
+          TopLeft="60.5714296029539,118.682354605652" />
+        <EdgeLayout
+          Id="Package\DFT Raw To SQL Server.Paths[Raw File Source Output]"
+          TopLeft="126.885715346434,59.3411767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.3411778862502"
+              Start="0,0"
+              End="0,51.8411778862502">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.8411778862502" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Raw To SQL Server\SQL Books">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

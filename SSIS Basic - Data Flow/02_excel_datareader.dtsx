@@ -1,0 +1,468 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2020 7:21:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WS-MERSIHACE"
+  DTS:CreatorName="MISTRAL\mersihace"
+  DTS:DTSID="{1D3CC929-197A-4B7D-9BDE-6CB7548DCC3E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="02_excel_datareader"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{67C058EE-141E-4FED-B412-B607FEC8A5F0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{CA9C0871-2977-48BB-96F6-BEF5CFE172FA}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\mersihace\Desktop\SSIS\Persons_old.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{57030E91-0331-433C-B0CF-2B2806FBDF07}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\mersihace\Desktop\SSIS\Persons.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6D24F1D8-E2C1-4F88-BE8A-EF344EFDCA64}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\DRD My Application"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Exposes data in a data flow to other applications by using the ADO.NET DataReader interface. For example, send data to a custom application, written in C#, that requires a DataReader interface.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Exposes data in a data flow to other applications by using the ADO.NET DataReader interface. For example, send data to a custom application, written in C#, that requires a DataReader interface."
+              name="DRD My Application">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of milliseconds before the component times out."
+                  name="ReadTimeout">30000</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies an object that implements the IDataReader interface."
+                  name="DataReader" />
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the component fails when a read time-out occurs."
+                  name="FailOnTimeout">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderDestinationAdapter</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input]"
+                  hasSideEffects="true"
+                  name="DataReader Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[RB]"
+                      cachedDataType="r8"
+                      cachedName="RB"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[RB]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[First Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="First Name"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[First Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Last Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Last Name"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Last Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Age]"
+                      cachedDataType="r8"
+                      cachedName="Age"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Date"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input].Columns[Id]"
+                      cachedDataType="r8"
+                      cachedName="Id"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\EXC Persons"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="EXC Persons"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">dataportal$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\EXC Persons.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[RB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[RB]"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[RB]"
+                      name="RB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[First Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[First Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[First Name]"
+                      name="First Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Last Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Last Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Last Name]"
+                      name="Last Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Age]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Age]"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Age]"
+                      name="Age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[RB]"
+                      dataType="r8"
+                      name="RB" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[First Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="First Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Last Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Last Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Age]"
+                      dataType="r8"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output].ExternalColumns[Id]"
+                      dataType="r8"
+                      name="Id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[RB]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[RB]"
+                      name="RB" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[First Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[First Name]"
+                      name="First Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Last Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Last Name]"
+                      name="Last Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Age]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Age]"
+                      name="Age" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Id]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\DRD My Application.Inputs[DataReader Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\EXC Persons.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136.8,41.6"
+          Id="Package\Data Flow Task\EXC Persons"
+          TopLeft="145.6,44" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task\DRD My Application"
+          TopLeft="157.6,143.2" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="214,85.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.2,57.6"
+              Start="0,0"
+              End="29.2,50.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.8"
+                    Point2="0,28.8"
+                    Point3="4,28.8" />
+                  <mssgle:LineSegment
+                    End="25.2,28.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.2,28.8"
+                    Point2="29.2,28.8"
+                    Point3="29.2,32.8" />
+                  <mssgle:LineSegment
+                    End="29.2,50.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\EXC Persons">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
