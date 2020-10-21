@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>SSIS Basic - Expressions</Name>
-    <LastWriteTime>2020-10-19T15:10:30.2990402Z</LastWriteTime>
+    <LastWriteTime>2020-10-21T13:21:32.8622239Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -14,6 +14,16 @@
     <ProjectBuildItemInfo>
       <Name>03_connection_manager.dtsx</Name>
       <LastWriteTime>2020-10-19T15:10:54.2707229Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>04_control_flow.dtsx</Name>
+      <LastWriteTime>2020-10-21T12:44:47.4267662Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>06_data_flow.dtsx</Name>
+      <LastWriteTime>2020-10-21T13:28:11.3729403Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
