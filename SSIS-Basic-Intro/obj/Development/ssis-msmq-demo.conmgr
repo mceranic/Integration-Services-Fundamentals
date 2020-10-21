@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ssis-msmq-demo"
+  DTS:DTSID="{02CB93BF-2389-40C0-A8C8-15C21FCF2D4C}"
+  DTS:CreationName="MSMQ">
+  <DTS:ObjectData>
+    <MsmqConnectionManager
+      ConnectionString="ws-mersihace\private$\ssis-msmq-demo" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

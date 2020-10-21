@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="WMI"
+  DTS:DTSID="{35CBBC7D-336A-48F3-8629-4FEF3B69416D}"
+  DTS:CreationName="WMI">
+  <DTS:ObjectData>
+    <WmiConnectionManager
+      ConnectionString="ServerName=\\localhost;Namespace=\root\cimv2;UseNtAuth=True;UserName=;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

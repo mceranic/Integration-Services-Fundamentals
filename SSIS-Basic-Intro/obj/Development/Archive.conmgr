@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Archive"
+  DTS:DTSID="{EC24B3EB-EEE5-49BD-B0FF-5F23333D3192}"
+  DTS:CreationName="FILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:FileUsageType="2"
+      DTS:ConnectionString="C:\Users\mersihace\Desktop\SSIS\Archive" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

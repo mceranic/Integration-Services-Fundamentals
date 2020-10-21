@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Destination"
+  DTS:DTSID="{49162FB3-6ECC-42C3-A3F5-6A3FB3EFCF60}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=WS-MERSIHACE\MSSQLSERVER19;Initial Catalog=StudentDataWarehouse;Integrated Security=True;Application Name=SSIS-SSIS-Basic-Intro-{49162FB3-6ECC-42C3-A3F5-6A3FB3EFCF60}WS-MERSIHACE\MSSQLSERVER19.StudentDataWarehouse;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
