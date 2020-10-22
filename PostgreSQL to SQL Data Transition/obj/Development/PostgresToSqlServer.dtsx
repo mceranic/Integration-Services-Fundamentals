@@ -1,0 +1,495 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2020 4:19:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WS-MERSIHACE"
+  DTS:CreatorName="MISTRAL\mersihace"
+  DTS:DTSID="{79ED6F28-F01D-4DD6-9F32-FD3A2B9B4B34}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.71"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PostgresToSqlServer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{1C36A38D-74D7-4FF2-B082-F08EA885529E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.postgres.postgres]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3D7DA9F4-F7AE-41E3-8E27-D3CC388EA47B}"
+      DTS:ObjectName="localhost.postgres.postgres">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;User ID=postgres;Initial Catalog=postgres;Provider=PGNP.1;Persist Security Info=True;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+CCvi6JQvUeTfQBOLHmF4gAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB/WYqyXKV+md8Bb7jOvoM7AAAAAASAAACgAAAAEAAAAJaF/NRoT512Hcow5GlnsT0gAAAA60x1dibw9uqj9UcF4ojt37x6K7O3zeOzMmIUBdcAY14UAAAAxNV+/hcK5giQtrIgnIJnJdw0ydw</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.TestDatabase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6EDA3F5A-CB59-49AF-9EBF-EAB279DC228F}"
+      DTS:ObjectName="WS-MERSIHACE\MSSQLSERVER19.TestDatabase">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::SqlServerDestination]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=WS-MERSIHACE\MSSQLSERVER19;Initial Catalog=TestDatabase;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C31CD81-B9F0-4B3E-A344-CCEBCADF8700}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Transfer Data from PostgreSQL database to SQL Server database"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PostgreSQL"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">"public"."weather"</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.postgres.postgres]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.postgres.postgres]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="80"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_lo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[temp_lo]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_lo]"
+                      name="temp_lo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_hi]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[temp_hi]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_hi]"
+                      name="temp_hi"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[prcp]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[prcp]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[prcp]"
+                      name="prcp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="80"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[temp_lo]"
+                      dataType="i4"
+                      name="temp_lo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[temp_hi]"
+                      dataType="i4"
+                      name="temp_hi" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[prcp]"
+                      dataType="r4"
+                      name="prcp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[temp_lo]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[temp_lo]"
+                      name="temp_lo" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[temp_hi]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[temp_hi]"
+                      name="temp_hi" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[prcp]"
+                      dataType="r4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[prcp]"
+                      name="prcp" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SQL Server"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Person]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.TestDatabase]"
+                  connectionManagerRefId="Package.ConnectionManagers[WS-MERSIHACE\MSSQLSERVER19.TestDatabase]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].Columns[temp_lo]"
+                      cachedDataType="i4"
+                      cachedName="temp_lo"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[temp_lo]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_lo]" />
+                    <inputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].Columns[temp_hi]"
+                      cachedDataType="i4"
+                      cachedName="temp_hi"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[temp_hi]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[temp_hi]" />
+                    <inputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].Columns[prcp]"
+                      cachedDataType="r4"
+                      cachedName="prcp"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[prcp]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[prcp]" />
+                    <inputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].Columns[date]"
+                      cachedDataType="dbDate"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output].Columns[date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="80"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[temp_lo]"
+                      dataType="i4"
+                      name="temp_lo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[temp_hi]"
+                      dataType="i4"
+                      name="temp_hi" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[prcp]"
+                      dataType="r4"
+                      name="prcp" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input].ExternalColumns[date]"
+                      dataType="dbDate"
+                      name="date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database.Paths[OLE DB Source Output]"
+              endId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="408,41.6"
+          Id="Package\DFT Transfer Data from PostgreSQL database to SQL Server database"
+          TopLeft="81.7142871058718,43.4352947268107" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Transfer Data from PostgreSQL database to SQL Server database">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL"
+          TopLeft="74.2857155507924,25.6941180074091" />
+        <NodeLayout
+          Size="130.4,41.6"
+          Id="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server"
+          TopLeft="72.0000012261527,137.035296039515" />
+        <EdgeLayout
+          Id="Package\DFT Transfer Data from PostgreSQL database to SQL Server database.Paths[OLE DB Source Output]"
+          TopLeft="138.942858388473,67.2941180074091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.7411780321062"
+              Start="0,0"
+              End="0,62.2411780321062">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.2411780321062" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\PostgreSQL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Transfer Data from PostgreSQL database to SQL Server database\SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
